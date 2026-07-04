@@ -6,6 +6,14 @@
 <div id="pl-drawing-{{uuid}}" class="pl-drawing-container pl-requires-svg-mathjax mb-3">
     <div class="pl-drawing-output">
         <div class="pl-drawing-main">
+            <canvas
+                width="{{width}}"
+                height="{{height}}"
+                {{#preview_mode}}role="img"{{/preview_mode}}
+                {{#aria_description}}aria-description="{{aria_description}}"{{/aria_description}}
+                {{#aria_label}}aria-label="{{aria_label}}"{{/aria_label}}
+            >
+            </canvas>
             {{#parse_error}}
                 <div class="pl-drawing-header">
                     <span class="small d-inline-flex align-items-center gap-1 text-nowrap">
@@ -42,14 +50,6 @@
                     <span class="badge text-bg-danger"><i class="fas fa-times" aria-hidden="true"></i> 0%</span>
                 </div>
             {{/incorrect}}
-            <canvas
-                width="{{width}}"
-                height="{{height}}"
-                {{#preview_mode}}role="img"{{/preview_mode}}
-                {{#aria_description}}aria-description="{{aria_description}}"{{/aria_description}}
-                {{#aria_label}}aria-label="{{aria_label}}"{{/aria_label}}
-            >
-            </canvas>
         </div>
         {{#show_tolerance}}
             <div><small>({{{ tolerance }}})</small></div>

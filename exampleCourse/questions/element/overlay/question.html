@@ -3,15 +3,16 @@
         <i>
             The element <code>pl-overlay</code> allows the positioning of pre-existing elements in arbitrary positions on top of other elements.
             This question combines a static image to serve as a background
-            along with the <code>pl-string-input</code> element.
+            along with the <code>pl-drawing</code> and <code>pl-string-input</code> elements.
         </i>
     </p>
     <p>
-        Write the name of the unlabeled country:
+        Write the name of the unlabeled country and place a dot on Copenhagen:
     </p>
 </pl-question-panel>
 
-<pl-overlay>
+{{! Default height would be tall enough for the pl-background (629 px), but we need extra height for the score footer and tolerance hint below the pl-drawing }}
+<pl-overlay height="700">
     {{! Background map image }}
     <pl-background>
         {{! Use a normal img tag because pl-figure applies extra padding and scaling when the window gets small }}
@@ -21,6 +22,21 @@
     </pl-background>
 
     {{! Input }}
+    <pl-location left="0" top="0" valign="top" halign="left">
+        <pl-drawing width="700" height="629" gradable="true" answers-name="city" grid-size="0" hide-answer-panel="false" show-tolerance-hint="true" tol="10" show-score="true" allow-blank="true">
+            <pl-drawing-answer draw-error-box="true">
+                <pl-point x1="212" y1="195"></pl-point>
+            </pl-drawing-answer>
+            <pl-controls>
+                <pl-controls-group label="Graded objects:">
+                    <pl-drawing-button type="pl-point"></pl-drawing-button>
+                </pl-controls-group>
+                <pl-controls-group label="Delete button:">
+                    <pl-drawing-button type="delete"></pl-drawing-button>
+                </pl-controls-group>
+            </pl-controls>
+        </pl-drawing>
+    </pl-location>
     <pl-location left="460" top="290">
        <pl-string-input answers-name="string_value" show-help-text="false" size="7"
                         correct-answer="Ukraine" aria-label="Unlabeled country" remove-leading-trailing="true" ignore-case="true"></pl-string-input>
